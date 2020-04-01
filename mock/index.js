@@ -4,12 +4,14 @@ import { param2Obj } from '../src/utils'
 import user from './user'
 import role from './role'
 import article from './article'
+import mymocktest from './mymocktest'
 import search from './remote-search'
 
 const mocks = [
   ...user,
   ...role,
   ...article,
+  ...mymocktest,
   ...search
 ]
 

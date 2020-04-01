@@ -382,6 +382,30 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/test',
+    component: Layout,
+    redirect: '/export-excel',
+    name: 'excel',
+    meta: {
+      title: 'mytest',
+      icon: 'excel'
+    },
+    children: [
+      {
+        path: 'mytest',
+        component: () => import('@/views/mytest/mytest1'),
+        name: 'mytest',
+        meta: { title: 'ttt' }
+      },
+      {
+        path: 'export-excel',
+        component: () => import('@/views/excel/export-excel'),
+        name: 'mytest',
+        meta: { title: 'ttt2' }
+      }
+    ]
+  },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

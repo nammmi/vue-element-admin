@@ -106,8 +106,8 @@
       :limit.sync="listQuery2.limit"
       @pagination="getDataList"
     />
+    <component :is="mytestcomponent" />
   </div>
-  <!-- </div> -->
 </template>
 <script>
 // import { mytestfunc } from '@/api/mytestapi'
@@ -116,9 +116,10 @@ import { fetchList } from '@/api/article'
 import { getDataList } from '@/api/mytestapi'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
 import Pagination2 from '@/components/Pagination'
+import mytestcomponent from './myt'
 export default {
   name: 'ArticleList',
-  components: { Pagination, Pagination2 },
+  components: { Pagination, Pagination2, mytestcomponent },
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -136,6 +137,7 @@ export default {
       total2: 0,
       listLoading: true,
       listLoading2: true,
+      mytestcomponent: 'mytestcomponent',
       tableData: [{ id: 1, date: Date(), address: 'sss', name: 'ddd' }],
       listQuery: {
         page: 1,

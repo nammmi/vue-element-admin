@@ -44,6 +44,7 @@
 // import GithubCorner from '@/components/GithubCorner'
 import PanelGroup from './components/PanelGroup'
 import LineChart from './components/LineChart'
+import { getEchartsData } from '@/api/mytestapi'
 // import RaddarChart from './components/RaddarChart'
 // import PieChart from './components/PieChart'
 // import BarChart from './components/BarChart'
@@ -53,8 +54,8 @@ import LineChart from './components/LineChart'
 
 const lineChartData = {
   newVisitis: {
-    expectedData: [100, 120, 161, 134, 105, 160, 165],
-    actualData: [120, 82, 91, 154, 162, 140, 145]
+    expectedData: [100, 120, 161, 134, 105, 160, 165, 999],
+    actualData: [120, 82, 91, 154, 162, 140, 145, 233]
   },
   messages: {
     expectedData: [200, 192, 120, 144, 160, 130, 140],
@@ -84,13 +85,22 @@ export default {
     // BoxCard
   },
   data() {
+    // getEchartsData().then(response => {
+    //   lineChartData.expectedData = response.data.items
+    //   lineChartData.actualData = response.data.items2
+    // })
     return {
       lineChartData: lineChartData.newVisitis
+      // lineChartData: this.lineChartData
     }
   },
   methods: {
     handleSetLineChartData(type) {
-      this.lineChartData = lineChartData[type]
+      // this.lineChartData = lineChartData[type]
+      getEchartsData(type).then(response => {
+        lineChartData.expectedData = response.data.items
+        lineChartData.actualData = response.data.items2
+      })
     }
   }
 }

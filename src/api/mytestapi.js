@@ -8,10 +8,10 @@ export function getDataList(query) {
   })
 }
 
-export function getEchartsData(type) {
+export function getEchartsData(param) {
   return request({
     url: '/vue-element-admin/mytest/echartsdatalist',
     method: 'get',
-    params: type
+    params: { param }
   })
 }

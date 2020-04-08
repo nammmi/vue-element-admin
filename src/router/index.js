@@ -393,6 +393,12 @@ export const asyncRoutes = [
     },
     children: [
       {
+        path: 'quality',
+        component: () => import('@/views/mytest/quality/index'),
+        name: 'quality',
+        meta: { title: '质量月报' }
+      },
+      {
         path: 'mytest',
         component: () => import('@/views/mytest/mytest1'),
         name: 'mytest',

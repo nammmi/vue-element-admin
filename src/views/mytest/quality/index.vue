@@ -3,7 +3,7 @@
     <div class="card-panel" style="background: rgb(255, 255, 255); padding: 16px 16px 16px; margin-bottom: 32px;">
       <el-row :gutter="24">
         <el-col :sm="8">
-          <el-label>产品：</el-label>
+          <label>产品：</label>
           <el-select v-model="value" placeholder="请选择">
             <el-option
               v-for="item in options"
@@ -15,7 +15,7 @@
         </el-col>
 
         <el-col :sm="14">
-          <el-label>时间：</el-label>
+          <label>时间：</label>
           <el-date-picker
             v-model="time"
             type="month"
@@ -26,7 +26,8 @@
           />
         </el-col>
         <el-col :sm="2">
-          <el-button v-loading="loading" type="success" class="share" @click="share">Draft</el-button>
+          <!-- v-loading="loading" -->
+          <el-button type="success" class="share" @click="share">分享</el-button>
         </el-col>
       </el-row>
     </div>
@@ -70,7 +71,7 @@
         </div>
       </el-card>
     </el-row>-->
-    <component :is="myform" />
+    <component :is="myform" :reportmonth="reportmonth" />
   </div>
   <!-- <div class="app-container"> -->
 
@@ -84,12 +85,19 @@ export default {
   name: 'ArticleList',
   components: { myform },
   filters: {},
+  // props: {
+  //   now: {
+  //     type: String,
+  //     default: Date()
+  //   }
+  // },
   data() {
     return {
       myform: 'myform',
       value: '讯飞输入法',
       options: [{ value: 1, label: '讯飞输入法' }],
       time: '',
+      reportmonth: '',
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() > Date.now()
@@ -100,6 +108,7 @@ export default {
   created() {},
   methods: {
     share() {
+      this.reportmonth = this.time
       // console.log(this.postForm)
       // this.$refs.postForm.validate(valid => {
       //   if (valid) {

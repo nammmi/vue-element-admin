@@ -1,115 +1,68 @@
 <template>
-  <div class="dashboard-editor-container">
-    <el-row :gutter="24">
-      <el-col :sm="8">
-        <el-label>产品：</el-label>
-        <el-select v-model="value" placeholder="请选择">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          />
-        </el-select>
-      </el-col>
-
-      <el-col :sm="14">
-        <el-label>时间：</el-label>
-        <el-date-picker
-          v-model="time"
-          type="month"
-          format="yyyy-MM"
-          value-format="yyyy-MM-dd HH:mm:ss"
-          placeholder="Release time"
-          :picker-options="pickerOptions"
-        />
-      </el-col>
-      <el-col :sm="2">
-        <el-button v-loading="loading" type="success" class="share" @click="share">Draft</el-button>
-      </el-col>
-    </el-row>
-    <!-- <el-row>
+  <div>
+    <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>Buttons</span>
+          <span>质量结论{{ reportmonth }}</span>
         </div>
         <div style="margin-bottom:50px;">
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn blue-btn" to="/documentation/index">
-              Documentation
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn light-blue-btn" to="/icon/index">
-              Icons
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn pink-btn" to="/excel/export-excel">
-              Excel
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn green-btn" to="/table/complex-table">
-              Table
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn tiffany-btn" to="/example/create">
-              Form
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn yellow-btn" to="/theme/index">
-              Theme
-            </router-link>
-          </el-col>
+          <el-row v-for="item in qua" :key="item.id" :span="4" class="text-left">{{ item.title }}</el-row>
+          <!-- <el-row :span="4" class="text-left">Documentation</el-row>
+          <el-row :span="4" class="text-left">Documentation</el-row>-->
         </div>
       </el-card>
-    </el-row> -->
+    </el-row>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Myform',
+  props: {
+    reportmonth: {
+      type: String,
+      default: Date()
+    }
+  },
   data() {
     return {
-      value: '讯飞输入法',
-      options: [{ value: 1, label: '讯飞输入法' }],
-      time: '',
-      pickerOptions: {
-        disabledDate(time) {
-          return time.getTime() > Date.now()
-        }
-      }
+      qua: [{
+        title: 'How to do lists in Vue',
+        id: 1,
+        publishedAt: '2016-04-10'
+      },
+      {
+        title: 'How to do lists in Vue',
+        id: 2,
+        publishedAt: '2016-04-10'
+      },
+      {
+        title: 'How to do lists in Vue',
+        id: 3,
+        publishedAt: '2016-04-10'
+      },
+      {
+        title: 'How to do lists in Vue',
+        id: 4,
+        publishedAt: '2016-04-10'
+      }]
     }
   },
   methods: {
-    share() {
-      // console.log(this.postForm)
-      // this.$refs.postForm.validate(valid => {
-      //   if (valid) {
-      //     this.loading = true
-      //     this.$notify({
-      //       title: '成功',
-      //       message: '发布文章成功',
-      //       type: 'success',
-      //       duration: 2000
-      //     })
-      //     this.postForm.status = 'published'
-      //     this.loading = false
-      //   } else {
-      //     console.log('error submit!!')
-      //     return false
-      //   }
-      // })
-    }
+    share() {}
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.mixin-components-container {
+  background-color: #f0f2f5;
+  padding: 30px;
+  min-height: calc(100vh - 84px);
+}
+.component-item {
+  min-height: 100px;
+}
 .share {
   text-align: r;
 }

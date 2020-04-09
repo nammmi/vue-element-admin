@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="mixin-components-container">
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>质量结论{{ reportmonth }}</span>
+          <span>质量结论</span>
         </div>
         <div style="margin-bottom:50px;">
-          <el-row v-for="item in qua" :key="item.id" :span="4" class="text-left">{{ item.title }}</el-row>
+          <el-row v-for="item in qua" :key="item.id" :span="4" class="text-left">{{ reportmonth }}{{ item.title }}</el-row>
           <!-- <el-row :span="4" class="text-left">Documentation</el-row>
           <el-row :span="4" class="text-left">Documentation</el-row>-->
         </div>
@@ -57,8 +57,8 @@ export default {
 <style lang="scss" scoped>
 .mixin-components-container {
   background-color: #f0f2f5;
-  padding: 30px;
-  min-height: calc(100vh - 84px);
+  // padding: 30px;
+  margin-bottom: 32px;
 }
 .component-item {
   min-height: 100px;

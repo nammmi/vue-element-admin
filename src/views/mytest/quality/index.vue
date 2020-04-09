@@ -1,6 +1,9 @@
 <template>
   <div class="dashboard-editor-container">
-    <div class="card-panel" style="background: rgb(255, 255, 255); padding: 16px 16px 16px; margin-bottom: 32px;">
+    <div
+      class="card-panel"
+      style="background: rgb(255, 255, 255); padding: 16px 16px 16px; margin-bottom: 32px;"
+    >
       <el-row :gutter="24">
         <el-col :sm="8">
           <label>产品：</label>
@@ -23,6 +26,7 @@
             value-format="yyyy-MM-dd HH:mm:ss"
             placeholder="Release time"
             :picker-options="pickerOptions"
+            @change="gettime2"
           />
         </el-col>
         <el-col :sm="2">
@@ -72,6 +76,7 @@
       </el-card>
     </el-row>-->
     <component :is="myform" :reportmonth="reportmonth" />
+    <component :is="voice" :reportmonth="reportmonth" />
   </div>
   <!-- <div class="app-container"> -->
 
@@ -81,9 +86,10 @@
 // import { mytestfunc } from '@/api/mytestapi'
 // import mytestSelect from '@/components/DragSelect'
 import myform from './components/myform'
+import voice from './components/voice'
 export default {
   name: 'ArticleList',
-  components: { myform },
+  components: { myform, voice },
   filters: {},
   // props: {
   //   now: {
@@ -94,6 +100,7 @@ export default {
   data() {
     return {
       myform: 'myform',
+      voice: 'voice',
       value: '讯飞输入法',
       options: [{ value: 1, label: '讯飞输入法' }],
       time: '',
@@ -108,7 +115,7 @@ export default {
   created() {},
   methods: {
     share() {
-      this.reportmonth = this.time
+      // this.reportmonth = this.time
       // console.log(this.postForm)
       // this.$refs.postForm.validate(valid => {
       //   if (valid) {
@@ -126,6 +133,9 @@ export default {
       //     return false
       //   }
       // })
+    },
+    gettime2() {
+      this.reportmonth = this.time
     }
   }
 }

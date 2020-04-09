@@ -23,7 +23,7 @@
             v-model="time"
             type="month"
             format="yyyy-MM"
-            value-format="yyyy-MM-dd HH:mm:ss"
+            value-format="yyyy-MM"
             placeholder="Release time"
             :picker-options="pickerOptions"
             @change="gettime2"
@@ -76,7 +76,7 @@
       </el-card>
     </el-row>-->
     <component :is="myform" :reportmonth="reportmonth" />
-    <component :is="voice" :reportmonth="reportmonth" />
+    <component :is="voice" :reportmonth="reportmonth" :voicedata="voicedata" />
   </div>
   <!-- <div class="app-container"> -->
 
@@ -87,6 +87,7 @@
 // import mytestSelect from '@/components/DragSelect'
 import myform from './components/myform'
 import voice from './components/voice'
+import { getVoiceData } from '@/api/mytestapi'
 export default {
   name: 'ArticleList',
   components: { myform, voice },
@@ -104,7 +105,8 @@ export default {
       value: '讯飞输入法',
       options: [{ value: 1, label: '讯飞输入法' }],
       time: '',
-      reportmonth: '',
+      reportmonth: { time: '' },
+      voicedata: {},
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() > Date.now()
@@ -135,7 +137,13 @@ export default {
       // })
     },
     gettime2() {
-      this.reportmonth = this.time
+      this.reportmonth.time = this.time
+      getVoiceData(this.time).then(response => {
+        this.voicedata = response.data[0]
+        // this.lineChartData = lineChartData[type]
+        // lineChartData[type].expectedData = response.data.expectedData
+        // lineChartData[type].actualData = response.data.actualData
+      })
     }
   }
 }

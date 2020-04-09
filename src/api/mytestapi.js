@@ -15,3 +15,11 @@ export function getEchartsData(param) {
     params: { param }
   })
 }
+
+export function getVoiceData(date) {
+  return request({
+    url: '/vue-element-admin/mytest/getvoicedata',
+    method: 'get',
+    params: { date }
+  })
+}

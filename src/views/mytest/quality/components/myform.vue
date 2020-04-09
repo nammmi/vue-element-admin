@@ -20,7 +20,7 @@ export default {
   name: 'Myform',
   props: {
     reportmonth: {
-      type: String,
+      type: Object,
       default: Date()
     }
   },

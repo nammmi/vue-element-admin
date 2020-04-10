@@ -8,7 +8,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">业务可用率</div>
-            <div class="card-panel-text">{{ voicedata.num }}</div>
+            <div class="card-panel-text">{{ emojidata.num }}</div>
             <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
             <div class="card-panel-text">%</div>
           </div>
@@ -21,7 +21,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">接口失败率</div>
-            <div class="card-panel-text">{{ voicedata.cpl }}</div>
+            <div class="card-panel-text">{{ emojidata.cpl }}</div>
             <!-- <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" /> -->
           </div>
         </div>
@@ -112,9 +112,11 @@ export default {
       type: Object,
       default: Date()
     },
-    voicedata: {
+    emojidata: {
       type: Object,
-      default: null
+      default: function() {
+        return { 'num': 111, 'cpl': 222 }
+      }
     }
   },
   methods: {

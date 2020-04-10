@@ -3,28 +3,30 @@
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>语音</span>
+          <span>表情</span>
         </div>
-        <component :is="PanelGroup" :reportmonth="reportmonth" :voicedata="voicedata" />
+        <component :is="EmojiPanelGroup" :reportmonth="reportmonth" :emojidata="emojidata" />
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-import PanelGroup from './PanelGroup'
+import EmojiPanelGroup from './EmojiPanelGroup'
 export default {
-  name: 'Voice',
-  components: { PanelGroup },
+  name: 'Emoji',
+  components: { EmojiPanelGroup },
   // PanelGroup：'PanelGroup',
   props: {
     reportmonth: {
       type: Object,
       default: Date()
     },
-    voicedata: {
+    emojidata: {
       type: Object,
-      default: null
+      default: function() {
+        return { 'num': 111, 'cpl': 222 }
+      }
     }
   },
   data() {
@@ -36,7 +38,7 @@ export default {
           publishedAt: '2016-04-10'
         }
       ],
-      PanelGroup: 'PanelGroup'
+      EmojiPanelGroup: 'EmojiPanelGroup'
     }
   },
   methods: {

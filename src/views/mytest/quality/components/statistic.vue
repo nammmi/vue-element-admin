@@ -3,28 +3,29 @@
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>语音</span>
+          <span>竞品对比分析</span>
         </div>
-        <component :is="PanelGroup" :reportmonth="reportmonth" :voicedata="voicedata" />
+        <!-- <component :is="PanelGroup" :reportmonth="reportmonth" :voicedata="statisticdata" /> -->
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-import PanelGroup from './PanelGroup'
+// import PanelGroup from './PanelGroup'
 export default {
-  name: 'Voice',
-  components: { PanelGroup },
-  // PanelGroup：'PanelGroup',
+  name: 'Statistic',
+  // components: { PanelGroup },
   props: {
     reportmonth: {
       type: Object,
       default: Date()
     },
-    voicedata: {
+    statisticdata: {
       type: Object,
-      default: null
+      default: function() {
+        return { 'num': 111, 'cpl': 222 }
+      }
     }
   },
   data() {
@@ -35,8 +36,7 @@ export default {
           id: 1,
           publishedAt: '2016-04-10'
         }
-      ],
-      PanelGroup: 'PanelGroup'
+      ]
     }
   },
   methods: {

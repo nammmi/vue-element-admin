@@ -3,28 +3,30 @@
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>语音</span>
+          <span>拼音</span>
         </div>
-        <component :is="PanelGroup" :reportmonth="reportmonth" :voicedata="voicedata" />
+        <component :is="PhoneticPanelGroup" :reportmonth="reportmonth" :phoneticdata="phoneticdata" />
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-import PanelGroup from './PanelGroup'
+import PhoneticPanelGroup from './PhoneticPanelGroup'
 export default {
-  name: 'Voice',
-  components: { PanelGroup },
+  name: 'Phonetic',
+  components: { PhoneticPanelGroup },
   // PanelGroup：'PanelGroup',
   props: {
     reportmonth: {
       type: Object,
       default: Date()
     },
-    voicedata: {
+    phoneticdata: {
       type: Object,
-      default: null
+      default: function() {
+        return { 'num': 111, 'cpl': 222 }
+      }
     }
   },
   data() {
@@ -36,7 +38,7 @@ export default {
           publishedAt: '2016-04-10'
         }
       ],
-      PanelGroup: 'PanelGroup'
+      PhoneticPanelGroup: 'PhoneticPanelGroup'
     }
   },
   methods: {

@@ -3,28 +3,30 @@
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>语音</span>
+          <span>变现</span>
         </div>
-        <component :is="PanelGroup" :reportmonth="reportmonth" :voicedata="voicedata" />
+        <component :is="CashPanelGroup" :reportmonth="reportmonth" :cashdata="cashdata" />
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-import PanelGroup from './PanelGroup'
+import CashPanelGroup from './CashPanelGroup'
 export default {
-  name: 'Voice',
-  components: { PanelGroup },
+  name: 'Cash',
+  components: { CashPanelGroup },
   // PanelGroup：'PanelGroup',
   props: {
     reportmonth: {
       type: Object,
       default: Date()
     },
-    voicedata: {
+    cashdata: {
       type: Object,
-      default: null
+      default: function() {
+        return { 'num': 111, 'cpl': 222 }
+      }
     }
   },
   data() {
@@ -36,7 +38,7 @@ export default {
           publishedAt: '2016-04-10'
         }
       ],
-      PanelGroup: 'PanelGroup'
+      CashPanelGroup: 'CashPanelGroup'
     }
   },
   methods: {

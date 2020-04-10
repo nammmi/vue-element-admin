@@ -35,48 +35,15 @@
         </el-col>
       </el-row>
     </div>
-
-    <!-- <el-row>
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>Buttons</span>
-        </div>
-        <div style="margin-bottom:50px;">
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn blue-btn" to="/documentation/index">
-              Documentation
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn light-blue-btn" to="/icon/index">
-              Icons
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn pink-btn" to="/excel/export-excel">
-              Excel
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn green-btn" to="/table/complex-table">
-              Table
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn tiffany-btn" to="/example/create">
-              Form
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
-            <router-link class="pan-btn yellow-btn" to="/theme/index">
-              Theme
-            </router-link>
-          </el-col>
-        </div>
-      </el-card>
-    </el-row>-->
     <component :is="myform" :reportmonth="reportmonth" />
     <component :is="voice" :reportmonth="reportmonth" :voicedata="voicedata" />
+    <component :is="phonetic" :reportmonth="reportmonth" :phoneticdata="phoneticdata" />
+    <component :is="emoji" :reportmonth="reportmonth" :phoneticdata="emojidata" />
+    <component :is="cash" :reportmonth="reportmonth" :phoneticdata="cashdata" />
+    <component :is="skin" :reportmonth="reportmonth" :phoneticdata="skindata" />
+    <component :is="perform" :reportmonth="reportmonth" :phoneticdata="performdata" />
+    <component :is="problem" :reportmonth="reportmonth" :phoneticdata="problemdata" />
+    <component :is="statistic" :reportmonth="reportmonth" :phoneticdata="statisticdata" />
   </div>
   <!-- <div class="app-container"> -->
 
@@ -87,26 +54,48 @@
 // import mytestSelect from '@/components/DragSelect'
 import myform from './components/myform'
 import voice from './components/voice'
+import phonetic from './components/phonetic'
+import emoji from './components/emoji'
+import cash from './components/cash'
+import skin from './components/skin'
+import perform from './components/perform'
+import problem from './components/problem'
+import statistic from './components/statistic'
+import { getPhoneticData } from '@/api/mytestapi'
 import { getVoiceData } from '@/api/mytestapi'
+import { getEmojiData } from '@/api/mytestapi'
+import { getCashData } from '@/api/mytestapi'
+import { getSkinData } from '@/api/mytestapi'
+import { getPerformData } from '@/api/mytestapi'
+import { getProblemData } from '@/api/mytestapi'
+import { getStatisticData } from '@/api/mytestapi'
 export default {
   name: 'ArticleList',
-  components: { myform, voice },
+  components: { myform, voice, phonetic, emoji, cash, skin, perform, problem, statistic },
   filters: {},
-  // props: {
-  //   now: {
-  //     type: String,
-  //     default: Date()
-  //   }
-  // },
   data() {
     return {
       myform: 'myform',
       voice: 'voice',
+      phonetic: 'phonetic',
+      emoji: 'emoji',
+      cash: 'cash',
+      skin: 'skin',
+      perform: 'perform',
+      problem: 'problem',
+      statistic: 'statistic',
       value: '讯飞输入法',
       options: [{ value: 1, label: '讯飞输入法' }],
       time: '',
       reportmonth: { time: '' },
       voicedata: {},
+      phoneticdata: {},
+      emojidata: { 'num': 111, 'cpl': 222 },
+      cashdata: { 'num': 111, 'cpl': 222 },
+      skindata: { 'num': 111, 'cpl': 222 },
+      performdata: { 'num': 111, 'cpl': 222 },
+      problemdata: { 'num': 111, 'cpl': 222 },
+      statisticdata: { 'num': 111, 'cpl': 222 },
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() > Date.now()
@@ -140,9 +129,27 @@ export default {
       this.reportmonth.time = this.time
       getVoiceData(this.time).then(response => {
         this.voicedata = response.data[0]
-        // this.lineChartData = lineChartData[type]
-        // lineChartData[type].expectedData = response.data.expectedData
-        // lineChartData[type].actualData = response.data.actualData
+      })
+      getPhoneticData(this.time).then(response => {
+        this.phoneticdata = response.data[0]
+      })
+      getEmojiData(this.time).then(response => {
+        this.getEmojiData = response.data[0]
+      })
+      getCashData(this.time).then(response => {
+        this.getCashData = response.data[0]
+      })
+      getSkinData(this.time).then(response => {
+        this.getSkinData = response.data[0]
+      })
+      getPerformData(this.time).then(response => {
+        this.getPerformData = response.data[0]
+      })
+      getProblemData(this.time).then(response => {
+        this.getProblemData = response.data[0]
+      })
+      getStatisticData(this.time).then(response => {
+        this.getStatisticData = response.data[0]
       })
     }
   }

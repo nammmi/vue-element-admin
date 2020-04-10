@@ -3,28 +3,30 @@
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>语音</span>
+          <span>皮肤</span>
         </div>
-        <component :is="PanelGroup" :reportmonth="reportmonth" :voicedata="voicedata" />
+        <component :is="SkinPanelGroup" :reportmonth="reportmonth" :skindata="skindata" />
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-import PanelGroup from './PanelGroup'
+import SkinPanelGroup from './SkinPanelGroup'
 export default {
-  name: 'Voice',
-  components: { PanelGroup },
+  name: 'Skin',
+  components: { SkinPanelGroup },
   // PanelGroup：'PanelGroup',
   props: {
     reportmonth: {
       type: Object,
       default: Date()
     },
-    voicedata: {
+    skindata: {
       type: Object,
-      default: null
+      default: function() {
+        return { 'num': 111, 'cpl': 222 }
+      }
     }
   },
   data() {
@@ -36,7 +38,7 @@ export default {
           publishedAt: '2016-04-10'
         }
       ],
-      PanelGroup: 'PanelGroup'
+      SkinPanelGroup: 'SkinPanelGroup'
     }
   },
   methods: {

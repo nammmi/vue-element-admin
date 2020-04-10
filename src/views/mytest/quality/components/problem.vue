@@ -3,28 +3,59 @@
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>语音</span>
+          <span>线上问题</span>
         </div>
-        <component :is="PanelGroup" :reportmonth="reportmonth" :voicedata="voicedata" />
+        <component :is="ProblemPanelGroup" :reportmonth="reportmonth" :problemdata="problemdata" />
+        <el-row :gutter="32">
+          <el-col :xs="24" :sm="24" :lg="8">
+            <div class="chart-wrapper">安卓</div>
+          </el-col>
+          <el-col :xs="24" :sm="24" :lg="8">
+            <div class="chart-wrapper">IOS</div>
+          </el-col>
+          <el-col :xs="24" :sm="24" :lg="8">
+            <div class="chart-wrapper">服务端</div>
+          </el-col>
+        </el-row>
+        <el-row :gutter="32">
+          <el-col :xs="24" :sm="24" :lg="8">
+            <div class="chart-wrapper">
+              <pie-chart />
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="24" :lg="8">
+            <div class="chart-wrapper">
+              <pie-chart />
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="24" :lg="8">
+            <div class="chart-wrapper">
+              <pie-chart />
+            </div>
+          </el-col>
+        </el-row>
       </el-card>
     </el-row>
   </div>
 </template>
 
 <script>
-import PanelGroup from './PanelGroup'
+import ProblemPanelGroup from './ProblemPanelGroup'
+import PieChart from './PieChart'
 export default {
-  name: 'Voice',
-  components: { PanelGroup },
+  name: 'Problem',
+  components: { ProblemPanelGroup, PieChart },
   // PanelGroup：'PanelGroup',
   props: {
     reportmonth: {
       type: Object,
       default: Date()
     },
-    voicedata: {
+    problemdata: {
       type: Object,
-      default: null
+      default: function() {
+        return { num: 111, cpl: 222 }
+      }
     }
   },
   data() {
@@ -36,7 +67,8 @@ export default {
           publishedAt: '2016-04-10'
         }
       ],
-      PanelGroup: 'PanelGroup'
+      ProblemPanelGroup: 'ProblemPanelGroup',
+      PieChart: 'PieChart'
     }
   },
   methods: {

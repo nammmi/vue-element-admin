@@ -8,9 +8,9 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">业务可用率</div>
-            <div class="card-panel-text">{{ voicedata.num }}</div>
-            <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
-            <div class="card-panel-text">%</div>
+            <!-- <div class="card-panel-text">{{ voicedata.bussAvaliableRate }}</div> -->
+            <count-to :start-val="0" :end-val="voicedata.bussAvaliableRate" :duration="2600" class="card-panel-num" />
+            <span class="card-panel-text">%</span>
           </div>
         </div>
       </el-col>
@@ -21,8 +21,8 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">接口失败率</div>
-            <div class="card-panel-text">{{ voicedata.cpl }}</div>
-            <!-- <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" /> -->
+            <!-- <div class="card-panel-text">{{ voicedata.interfaceFailRate }}</div> -->
+            <count-to :start-val="0" :end-val="voicedata.interfaceFailRate" :duration="3000" class="card-panel-num" />
           </div>
         </div>
       </el-col>
@@ -33,7 +33,8 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">新增严重问题数</div>
-            <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
+            <!-- <div class="card-panel-text">{{ voicedata.newProblemCount }}</div> -->
+            <count-to :start-val="0" :end-val="voicedata.newProblemCount" :duration="3200" class="card-panel-num" />
           </div>
         </div>
       </el-col>
@@ -44,7 +45,8 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">遗留严重问题数</div>
-            <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
+            <!-- <div class="card-panel-text">{{ voicedata.lastProblemCount }}</div> -->
+            <count-to :start-val="0" :end-val="voicedata.lastProblemCount" :duration="3600" class="card-panel-num" />
           </div>
         </div>
       </el-col>
@@ -57,7 +59,8 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">首结果平均响应时间</div>
-            <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+            <!-- <div class="card-panel-text">{{ voicedata.headAvgRespTime }}</div> -->
+            <count-to :start-val="0" :end-val="voicedata.headAvgRespTime" :duration="2600" class="card-panel-num" />
           </div>
         </div>
       </el-col>
@@ -68,7 +71,8 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">首结果较长响应时间占比(3s)</div>
-            <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
+            <!-- <div class="card-panel-text">{{ voicedata.headAvgRespTimeRate }}</div> -->
+            <count-to :start-val="0" :end-val="voicedata.headAvgRespTimeRate" :duration="3000" class="card-panel-num" />
           </div>
         </div>
       </el-col>
@@ -79,8 +83,9 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">尾结果平均响应时间</div>
+            <!-- <div class="card-panel-text">{{ voicedata.tailAvgRespTime }}</div> -->
             <!-- <div class="card-panel-text">尾结果平均响应时间</div> -->
-            <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
+            <count-to :start-val="0" :end-val="voicedata.tailAvgRespTime" :duration="3200" class="card-panel-num" />
             <!-- <div class="card-panel-text">%</div> -->
           </div>
         </div>
@@ -92,7 +97,8 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">尾结果较长响应时间占比(0.3s)</div>
-            <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
+            <!-- <div class="card-panel-text">{{ voicedata.tailAvgRespTimeRate }}</div> -->
+            <count-to :start-val="0" :end-val="voicedata.tailAvgRespTimeRate" :duration="3600" class="card-panel-num" />
           </div>
         </div>
       </el-col>
@@ -114,7 +120,9 @@ export default {
     },
     voicedata: {
       type: Object,
-      default: null
+      default: function() {
+        return { 'num': 111, 'cpl': 222 }
+      }
     }
   },
   methods: {
@@ -183,7 +191,7 @@ export default {
     }
 
     .card-panel-icon-wrapper {
-      float: left;
+      float: right;
       margin: 14px 0 0 14px;
       padding: 16px;
       transition: all 0.38s ease-out;
@@ -191,7 +199,7 @@ export default {
     }
 
     .card-panel-icon {
-      float: left;
+      float: right;
       font-size: 48px;
     }
 
@@ -210,6 +218,7 @@ export default {
 
       .card-panel-num {
         font-size: 20px;
+        color: rgb(202, 52, 52);
       }
     }
   }

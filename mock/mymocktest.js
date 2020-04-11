@@ -13,28 +13,28 @@ voiceDataList.push(Mock.mock({
   num: '@integer(1, 20)',
   cpl: '@integer(1, 5)',
   tf: '@boolean',
-  date: '2020-01',
+  date: '2001',
   timestamp2: +Mock.Random.date('T')
 }))
 voiceDataList.push(Mock.mock({
   num: '@integer(1, 20)',
   cpl: '@integer(1, 5)',
   tf: '@boolean',
-  date: '2020-02',
+  date: '2002',
   timestamp2: +Mock.Random.date('T')
 }))
 voiceDataList.push(Mock.mock({
   num: '@integer(1, 20)',
   cpl: '@integer(1, 5)',
   tf: '@boolean',
-  date: '2020-03',
+  date: '2003',
   timestamp2: +Mock.Random.date('T')
 }))
 voiceDataList.push(Mock.mock({
   num: '@integer(1, 20)',
   cpl: '@integer(1, 5)',
   tf: '@boolean',
-  date: '2020-04',
+  date: '2004',
   timestamp2: +Mock.Random.date('T')
 }))
 // }

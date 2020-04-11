@@ -23,7 +23,7 @@
             v-model="time"
             type="month"
             format="yyyy-MM"
-            value-format="yyyy-MM"
+            value-format="yyMM"
             placeholder="Release time"
             :picker-options="pickerOptions"
             @change="gettime2"
@@ -128,7 +128,7 @@ export default {
     gettime2() {
       this.reportmonth.time = this.time
       getVoiceData(this.time).then(response => {
-        this.voicedata = response.data[0]
+        this.voicedata = response[0]
       })
       getPhoneticData(this.time).then(response => {
         this.phoneticdata = response.data[0]

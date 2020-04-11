@@ -36,7 +36,20 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    // before: require('./mock/mock-server.js'),
+    proxy: {
+      '/dev-api/vue-element-admin/mytest': {
+        target: `http://localhost:8081/`,
+        changeOrigin: true
+        // pathRewrite: {
+        //   ['^' + process.env.VUE_APP_BASE_API]: ''
+        // }
+      }
+    },
+    // proxy: {
+    //   '/dev-api': 'http://localhost:8081'
+    // },
+    after: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
